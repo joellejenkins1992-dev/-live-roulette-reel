@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Live Roulette Reel - NFL Fantasy Draft Order</title>
 
 <style>
-
 * {
     box-sizing: border-box;
 }
@@ -16,16 +14,9 @@ body {
     margin: 0;
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
-    color: #ffffff;
-
+    color: white;
     background:
-        radial-gradient(
-            circle at 50% 10%,
-            #263d5d 0%,
-            #0d1726 42%,
-            #03070c 100%
-        );
-
+        radial-gradient(circle at 50% 15%, #253d5c 0%, #0b1421 45%, #02060b 100%);
     overflow-x: hidden;
 }
 
@@ -34,275 +25,270 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    padding: 22px 12px 50px;
+    padding: 22px 14px 50px;
 }
-
-
-/* =========================
-   HEADER
-========================= */
 
 .header {
     text-align: center;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
 .header h1 {
     margin: 0;
-
-    font-size: clamp(34px, 8vw, 62px);
+    font-size: clamp(32px, 8vw, 60px);
     font-weight: 950;
-
     letter-spacing: 2px;
     text-transform: uppercase;
-
-    text-shadow:
-        0 4px 15px rgba(0,0,0,.7);
 }
 
 .header p {
     margin: 8px 0 0;
-
-    color: #9db0c8;
-
+    color: #9db0c7;
     font-size: 13px;
-    font-weight: 700;
-
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     text-transform: uppercase;
 }
 
-
-/* =========================
-   MAIN CARD
-========================= */
-
 .card {
-    width: min(920px, 100%);
-
+    width: min(900px, 100%);
     padding: 22px;
-
     border-radius: 26px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(20,32,50,.95),
-            rgba(4,10,18,.96)
-        );
-
-    border: 1px solid rgba(255,255,255,.12);
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.65),
-        inset 0 1px rgba(255,255,255,.06);
+    background: rgba(5, 13, 24, .92);
+    border: 1px solid rgba(255,255,255,.1);
+    box-shadow: 0 30px 80px rgba(0,0,0,.6);
 }
-
-
-/* =========================
-   PICK DISPLAY
-========================= */
 
 .position {
     text-align: center;
-
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .position-label {
-    color: #879bb4;
-
+    color: #8da2ba;
     font-size: 12px;
-    font-weight: 700;
-
     letter-spacing: 3px;
-
     text-transform: uppercase;
 }
 
 .position-number {
-    margin-top: 3px;
-
+    margin-top: 4px;
     font-size: 48px;
     font-weight: 950;
-
-    line-height: 1;
-
-    text-shadow:
-        0 4px 15px rgba(0,0,0,.7);
 }
 
 
-/* =========================
-   ROULETTE
-========================= */
+/* =================================
+   LOTTERY MACHINE
+================================= */
 
-.wheel-container {
-
+.machine {
     position: relative;
-
-    width: min(540px, 92vw);
-    aspect-ratio: 1;
-
+    width: min(540px, 94vw);
+    height: 470px;
     margin: 0 auto;
 }
 
 
-/* Gold pointer */
+/* Glass globe */
 
-.pointer {
-
+.globe {
     position: absolute;
-
-    z-index: 50;
-
     left: 50%;
-    top: -6px;
-
+    top: 15px;
     transform: translateX(-50%);
 
-    width: 0;
-    height: 0;
+    width: 410px;
+    height: 360px;
 
-    border-left: 21px solid transparent;
-    border-right: 21px solid transparent;
-    border-top: 43px solid #ffd447;
-
-    filter:
-        drop-shadow(0 4px 4px #000);
-}
-
-
-/* Outer roulette */
-
-.wheel {
-
-    position: absolute;
-
-    inset: 0;
-
-    border-radius: 50%;
-
-    border: 11px solid #cfd7df;
+    border-radius: 50% 50% 45% 45%;
 
     background:
-        conic-gradient(
-
-            from -15deg,
-
-            #b51f2d 0deg 30deg,
-            #101820 30deg 60deg,
-
-            #b51f2d 60deg 90deg,
-            #101820 90deg 120deg,
-
-            #b51f2d 120deg 150deg,
-            #101820 150deg 180deg,
-
-            #b51f2d 180deg 210deg,
-            #101820 210deg 240deg,
-
-            #b51f2d 240deg 270deg,
-            #101820 270deg 300deg,
-
-            #b51f2d 300deg 330deg,
-            #101820 330deg 360deg
+        radial-gradient(
+            circle at 35% 25%,
+            rgba(255,255,255,.22),
+            rgba(255,255,255,.05) 25%,
+            rgba(15,30,45,.18) 55%,
+            rgba(0,0,0,.55) 100%
         );
 
+    border: 7px solid rgba(205,216,225,.85);
+
     box-shadow:
-
-        0 0 0 5px #05090f,
-
-        0 0 45px rgba(0,0,0,.9),
-
-        inset 0 0 35px rgba(0,0,0,.8);
-
-    transition:
-        transform 5.8s cubic-bezier(.08,.72,.08,1);
+        inset 0 0 40px rgba(255,255,255,.08),
+        0 0 0 5px #060b11,
+        0 15px 45px rgba(0,0,0,.7);
 
     overflow: hidden;
 }
 
 
-/* Inner ring */
+/* Glass reflection */
 
-.wheel::before {
-
+.globe::before {
     content: "";
-
     position: absolute;
+    left: 45px;
+    top: 35px;
 
-    inset: 13%;
+    width: 100px;
+    height: 180px;
 
     border-radius: 50%;
 
-    border: 2px solid rgba(255,255,255,.25);
+    background: rgba(255,255,255,.08);
 
-    box-shadow:
-        inset 0 0 20px rgba(0,0,0,.6);
-}
-
-
-/* =========================
-   NAMES AROUND WHEEL
-========================= */
-
-.names {
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 10;
+    transform: rotate(25deg);
 
     pointer-events: none;
 }
 
 
-/*
-Each name is placed around
-the circumference.
-*/
+/* Balls */
 
-.name-slot {
+.balls {
+    position: absolute;
+    inset: 20px;
+
+    overflow: hidden;
+}
+
+
+.ball {
+    position: absolute;
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 5px;
+
+    font-size: 9px;
+    font-weight: 950;
+
+    color: #101820;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #ffffff,
+            #f2f2f2 55%,
+            #c7cdd2 100%
+        );
+
+    border: 2px solid #b8c0c7;
+
+    box-shadow:
+        inset -7px -8px 10px rgba(0,0,0,.12),
+        0 4px 7px rgba(0,0,0,.4);
+
+    transition:
+        left .35s ease,
+        top .35s ease,
+        transform .35s ease;
+}
+
+
+/* Selected ball */
+
+.ball.selected {
+    z-index: 50;
+
+    transform:
+        scale(1.55);
+
+    box-shadow:
+        0 0 0 5px #f5c84b,
+        0 0 35px #f5c84b,
+        0 10px 25px rgba(0,0,0,.7);
+}
+
+
+/* Machine base */
+
+.machine-base {
+    position: absolute;
+
+    left: 50%;
+    bottom: 5px;
+
+    transform: translateX(-50%);
+
+    width: 360px;
+    height: 105px;
+
+    border-radius: 35px 35px 15px 15px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #25394e,
+            #0d1825
+        );
+
+    border: 5px solid #7d8d9d;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.7);
+}
+
+
+/* Machine slot */
+
+.machine-base::before {
+    content: "";
 
     position: absolute;
 
     left: 50%;
-    top: 50%;
+    top: 17px;
 
-    width: 82px;
+    transform: translateX(-50%);
 
-    margin-left: -41px;
-    margin-top: -14px;
+    width: 190px;
+    height: 13px;
 
-    text-align: center;
+    border-radius: 10px;
 
-    font-size: 12px;
+    background: #05090d;
 
-    font-weight: 950;
-
-    text-transform: uppercase;
-
-    letter-spacing: .4px;
-
-    text-shadow:
-        0 2px 4px #000;
-
-    white-space: nowrap;
+    box-shadow:
+        inset 0 0 8px #000;
 }
 
 
-/* =========================
-   CENTER HUB
-========================= */
+/* Feet */
 
-.center {
+.machine-base::after {
+    content: "";
 
     position: absolute;
 
-    z-index: 30;
+    left: 35px;
+    right: 35px;
+    bottom: -17px;
+
+    height: 20px;
+
+    border-radius: 0 0 15px 15px;
+
+    background: #070d14;
+}
+
+
+/* Selection light */
+
+.selection-light {
+
+    position: absolute;
+
+    z-index: 40;
 
     left: 50%;
     top: 50%;
@@ -310,42 +296,39 @@ the circumference.
     transform:
         translate(-50%, -50%);
 
-    width: 112px;
-    height: 112px;
+    width: 105px;
+    height: 105px;
 
     border-radius: 50%;
 
-    background:
-        radial-gradient(
-            circle,
-            #334963 0%,
-            #101a27 65%,
-            #05090e 100%
-        );
+    border: 3px solid rgba(255,255,255,.15);
 
-    border: 7px solid #d8dfe5;
+    pointer-events: none;
+}
 
-    display: flex;
+.selection-light.active {
 
-    align-items: center;
-    justify-content: center;
+    animation:
+        lightPulse .5s infinite alternate;
+}
 
-    text-align: center;
+@keyframes lightPulse {
 
-    font-size: 13px;
-    font-weight: 950;
+    from {
+        box-shadow:
+            0 0 5px rgba(255,255,255,.1);
+    }
 
-    letter-spacing: 1px;
-
-    box-shadow:
-        0 0 25px rgba(0,0,0,.9),
-        inset 0 0 15px rgba(0,0,0,.7);
+    to {
+        box-shadow:
+            0 0 35px #f5c84b;
+    }
 }
 
 
-/* =========================
+/* =================================
    RESULT
-========================= */
+================================= */
 
 .result {
 
@@ -353,15 +336,14 @@ the circumference.
 
     min-height: 105px;
 
-    margin-top: 20px;
+    margin-top: 8px;
 }
 
 .result-label {
 
-    color: #8296ae;
+    color: #8397af;
 
     font-size: 12px;
-    font-weight: 700;
 
     letter-spacing: 3px;
 
@@ -370,38 +352,34 @@ the circumference.
 
 .result-name {
 
-    margin-top: 7px;
+    margin-top: 6px;
 
-    font-size: clamp(30px, 7vw, 56px);
+    font-size: clamp(32px, 8vw, 58px);
 
     font-weight: 950;
 
     opacity: 0;
 
-    transform: scale(.7);
-
-    text-shadow:
-        0 5px 20px rgba(0,0,0,.8);
+    transform: scale(.5);
 }
 
 .result-name.show {
 
     animation:
-        reveal .7s cubic-bezier(.17,.84,.32,1.25)
+        resultReveal .8s cubic-bezier(.17,.84,.32,1.25)
         forwards;
 }
 
-
-@keyframes reveal {
+@keyframes resultReveal {
 
     0% {
         opacity: 0;
-        transform: scale(.7);
+        transform: scale(.5);
     }
 
     65% {
         opacity: 1;
-        transform: scale(1.1);
+        transform: scale(1.12);
     }
 
     100% {
@@ -411,9 +389,9 @@ the circumference.
 }
 
 
-/* =========================
+/* =================================
    BUTTONS
-========================= */
+================================= */
 
 .buttons {
 
@@ -423,7 +401,7 @@ the circumference.
 
     gap: 12px;
 
-    margin-top: 8px;
+    margin-top: 5px;
 }
 
 button {
@@ -439,10 +417,6 @@ button {
     font-weight: 950;
 
     cursor: pointer;
-
-    transition:
-        transform .15s,
-        opacity .15s;
 }
 
 .start {
@@ -457,13 +431,7 @@ button {
         );
 
     box-shadow:
-        0 10px 30px rgba(220,20,45,.35);
-}
-
-.start:hover {
-
-    transform:
-        translateY(-2px);
+        0 10px 30px rgba(225,29,47,.3);
 }
 
 .start:disabled {
@@ -471,8 +439,6 @@ button {
     opacity: .45;
 
     cursor: not-allowed;
-
-    transform: none;
 }
 
 .reset {
@@ -482,27 +448,26 @@ button {
     background:
         linear-gradient(
             135deg,
-            #26384d,
-            #172434
+            #273a4e,
+            #162434
         );
 }
 
 
-/* =========================
+/* =================================
    DRAFT BOARD
-========================= */
+================================= */
 
 .board {
 
-    margin-top: 27px;
+    margin-top: 28px;
 }
 
 .board-title {
 
-    color: #8195ae;
+    color: #8397af;
 
     font-size: 12px;
-    font-weight: 700;
 
     letter-spacing: 3px;
 
@@ -533,9 +498,6 @@ button {
 
     border:
         1px solid #1d2b3d;
-
-    transition:
-        .3s ease;
 }
 
 .pick.revealed {
@@ -549,9 +511,6 @@ button {
 
     border-color:
         #6386aa;
-
-    box-shadow:
-        0 5px 15px rgba(0,0,0,.25);
 }
 
 .pick-number-small {
@@ -573,9 +532,7 @@ button {
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:600px) {
 
@@ -583,25 +540,23 @@ button {
         padding: 14px;
     }
 
-    .wheel-container {
-        width: min(500px, 94vw);
+    .globe {
+
+        width: 330px;
+        height: 300px;
     }
 
-    .center {
+    .ball {
 
-        width: 82px;
-        height: 82px;
+        width: 52px;
+        height: 52px;
 
-        font-size: 11px;
+        font-size: 7px;
     }
 
-    .name-slot {
+    .machine-base {
 
-        width: 72px;
-
-        margin-left: -36px;
-
-        font-size: 10px;
+        width: 300px;
     }
 
     .picks {
@@ -618,6 +573,7 @@ button {
 <body>
 
 <div class="app">
+
 
 <header class="header">
 
@@ -652,28 +608,25 @@ button {
 </div>
 
 
-<div class="wheel-container">
+<div class="machine">
 
-    <div class="pointer"></div>
-
-    <div
-        class="wheel"
-        id="wheel">
+    <div class="globe">
 
         <div
-            class="names"
-            id="names">
+            class="balls"
+            id="balls">
         </div>
 
     </div>
 
 
-    <div class="center">
-
-        LIVE<br>
-        ROULETTE
-
+    <div
+        class="selection-light"
+        id="selectionLight">
     </div>
+
+
+    <div class="machine-base"></div>
 
 </div>
 
@@ -681,9 +634,7 @@ button {
 <div class="result">
 
     <div class="result-label">
-
         Selected Team
-
     </div>
 
     <div
@@ -722,9 +673,7 @@ button {
 <section class="board">
 
     <div class="board-title">
-
         NFL Fantasy Draft Order
-
     </div>
 
     <div
@@ -744,25 +693,25 @@ button {
 
 
 /*
-===========================================================
-YOUR PREDETERMINED DRAFT ORDER
-===========================================================
+========================================
+YOUR DRAFT ORDER
+========================================
 */
 
 const PRESET_ORDER = [
 
-    "Blue Wolf",    // Pick 1
-    "Denton",       // Pick 2
-    "Griga",        // Pick 3
-    "Otto",         // Pick 4
-    "Twin",         // Pick 5
-    "Myro",         // Pick 6
-    "Eli",          // Pick 7
-    "Joey",         // Pick 8
-    "Ling",         // Pick 9
-    "Yellow",       // Pick 10
-    "Les",          // Pick 11
-    "Papi"          // Pick 12
+    "Blue Wolf",
+    "Denton",
+    "Griga",
+    "Otto",
+    "Twin",
+    "Myro",
+    "Eli",
+    "Joey",
+    "Ling",
+    "Yellow",
+    "Les",
+    "Papi"
 
 ];
 
@@ -774,20 +723,9 @@ let remainingTeams =
 
 let spinning = false;
 
-let rotation = 0;
 
-
-const wheel =
-    document.getElementById("wheel");
-
-const names =
-    document.getElementById("names");
-
-const startButton =
-    document.getElementById("startButton");
-
-const resetButton =
-    document.getElementById("resetButton");
+const balls =
+    document.getElementById("balls");
 
 const resultName =
     document.getElementById("resultName");
@@ -795,78 +733,136 @@ const resultName =
 const positionNumber =
     document.getElementById("positionNumber");
 
+const startButton =
+    document.getElementById("startButton");
+
+const resetButton =
+    document.getElementById("resetButton");
+
+const selectionLight =
+    document.getElementById("selectionLight");
+
 const picks =
     document.getElementById("picks");
 
 
 /*
-===========================================================
-CREATE WHEEL NAMES
-===========================================================
+========================================
+CREATE BALLS
+========================================
 */
 
-function createNames() {
+function createBalls() {
 
-    names.innerHTML = "";
+    balls.innerHTML = "";
 
     const count =
         remainingTeams.length;
-
-    if (!count) return;
-
-    const angle =
-        360 / count;
 
 
     remainingTeams.forEach(
         (team, index) => {
 
-            const slot =
+            const ball =
                 document.createElement("div");
 
-            slot.className =
-                "name-slot";
+            ball.className =
+                "ball";
 
+            ball.textContent =
+                team;
 
-            /*
-            Put each name at the center
-            of its roulette section.
-            */
-
-            const nameAngle =
-                index * angle +
-                angle / 2;
-
-
-            const radius =
-                window.innerWidth <= 600
-                ? 39
-                : 41;
-
-
-            slot.style.transform =
-                `
-                rotate(${nameAngle}deg)
-                translateY(-${radius}%)
-                rotate(-${nameAngle}deg)
-                `;
-
-
-            slot.textContent =
+            ball.dataset.team =
                 team;
 
 
-            names.appendChild(slot);
+            const position =
+                getBallPosition(
+                    index,
+                    count
+                );
+
+
+            ball.style.left =
+                position.x + "%";
+
+            ball.style.top =
+                position.y + "%";
+
+
+            balls.appendChild(ball);
 
         }
     );
+
 }
 
 
 /*
-===========================================================
+========================================
+BALL POSITIONS
+========================================
+*/
+
+function getBallPosition(
+    index,
+    count
+) {
+
+    /*
+    Spread balls in several rows
+    inside the glass globe.
+    */
+
+    const columns =
+        Math.min(
+            4,
+            Math.max(
+                2,
+                Math.ceil(
+                    Math.sqrt(count)
+                )
+            )
+        );
+
+
+    const row =
+        Math.floor(index / columns);
+
+    const column =
+        index % columns;
+
+
+    const rows =
+        Math.ceil(
+            count / columns
+        );
+
+
+    const x =
+        8 +
+        column *
+        (84 / Math.max(1, columns - 1));
+
+
+    const y =
+        10 +
+        row *
+        (72 / Math.max(1, rows - 1));
+
+
+    return {
+        x: Math.min(x, 88),
+        y: Math.min(y, 82)
+    };
+
+}
+
+
+/*
+========================================
 DRAFT BOARD
-===========================================================
+========================================
 */
 
 function createBoard() {
@@ -893,15 +889,11 @@ function createBoard() {
         box.innerHTML = `
 
             <div class="pick-number-small">
-
                 Pick ${i}
-
             </div>
 
             <div class="pick-name">
-
                 —
-
             </div>
 
         `;
@@ -915,46 +907,44 @@ function createBoard() {
 
 
 /*
-===========================================================
-SPIN
-===========================================================
+========================================
+START
+========================================
 */
 
 startButton.addEventListener(
     "click",
-    startRoulette
+    startLottery
 );
 
 
-function startRoulette() {
+function startLottery() {
 
     if (
         spinning ||
         remainingTeams.length === 0
     ) {
-
         return;
-
     }
 
 
     spinning = true;
 
-    startButton.disabled = true;
+    startButton.disabled =
+        true;
 
 
     resultName.classList.remove(
         "show"
     );
 
-
     resultName.textContent =
         "—";
 
 
     /*
-    Find the predetermined winner
-    for this draft position.
+    Predetermined selection for
+    this draft position.
     */
 
     const selectedTeam =
@@ -963,178 +953,229 @@ function startRoulette() {
         ];
 
 
-    const winnerIndex =
-        remainingTeams.indexOf(
-            selectedTeam
-        );
+    const allBalls =
+        [...document.querySelectorAll(".ball")];
 
 
-    const count =
-        remainingTeams.length;
-
-
-    const segmentAngle =
-        360 / count;
+    selectionLight.classList.add(
+        "active"
+    );
 
 
     /*
-    Center of selected section.
+    Rapidly scramble the balls.
     */
 
-    const targetAngle =
-        winnerIndex * segmentAngle +
-        segmentAngle / 2;
+    let shuffleCount = 0;
 
 
-    /*
-    Rotate backwards so that the
-    selected name reaches the top
-    pointer.
-    */
+    const shuffle =
+        setInterval(() => {
 
-    const targetRotation =
-        360 -
-        targetAngle;
+            allBalls.forEach(
+                ball => {
 
+                    ball.style.left =
+                        (5 +
+                        Math.random() * 80)
+                        + "%";
 
-    /*
-    Multiple complete spins.
-    */
+                    ball.style.top =
+                        (5 +
+                        Math.random() * 75)
+                        + "%";
 
-    const extraSpins =
-        7 +
-        Math.floor(
-            Math.random() * 3
-        );
+                    ball.style.transform =
+                        `rotate(
+                            ${Math.random() * 360}deg
+                        )`;
 
-
-    rotation +=
-        extraSpins * 360 +
-        targetRotation;
-
-
-    wheel.style.transform =
-        `rotate(${rotation}deg)`;
-
-
-    /*
-    Wait for wheel animation.
-    */
-
-    setTimeout(
-
-        () => {
-
-            resultName.textContent =
-                selectedTeam;
-
-
-            resultName.classList.add(
-                "show"
+                }
             );
 
 
-            showPick(
-                currentPick,
-                selectedTeam
-            );
-
-
-            remainingTeams =
-                remainingTeams.filter(
-                    team =>
-                        team !== selectedTeam
-                );
-
-
-            currentPick--;
+            shuffleCount++;
 
 
             if (
-                currentPick > 0
+                shuffleCount >= 13
             ) {
 
-                positionNumber.textContent =
-                    currentPick;
+                clearInterval(
+                    shuffle
+                );
 
-
-                createNames();
-
-
-                startButton.disabled =
-                    false;
+                revealBall(
+                    selectedTeam
+                );
 
             }
 
-            else {
-
-                positionNumber.textContent =
-                    "DONE";
-
-
-                startButton.textContent =
-                    "COMPLETE";
-
-            }
-
-
-            spinning = false;
-
-        },
-
-        5900
-
-    );
+        }, 180);
 
 }
 
 
 /*
-===========================================================
-SHOW PICK
-===========================================================
+========================================
+REVEAL SELECTED BALL
+========================================
 */
 
-function showPick(
-    position,
-    team
+function revealBall(
+    selectedTeam
 ) {
 
-    const box =
-        document.getElementById(
-            "pick-" + position
+    const selected =
+        document.querySelector(
+            `.ball[data-team="${CSS.escape(selectedTeam)}"]`
         );
 
 
-    if (!box) return;
+    if (!selected) {
+
+        finishSelection(
+            selectedTeam
+        );
+
+        return;
+    }
 
 
-    box.classList.add(
-        "revealed"
-    );
+    /*
+    Move selected ball toward
+    the center.
+    */
+
+    selected.style.left =
+        "50%";
+
+    selected.style.top =
+        "45%";
+
+    selected.style.transform =
+        "translate(-50%, -50%) scale(1.45)";
 
 
-    box.querySelector(
-        ".pick-name"
-    ).textContent =
-        team;
+    setTimeout(() => {
+
+        selected.classList.add(
+            "selected"
+        );
+
+
+        setTimeout(() => {
+
+            finishSelection(
+                selectedTeam
+            );
+
+        }, 900);
+
+
+    }, 600);
 
 }
 
 
 /*
-===========================================================
+========================================
+FINISH
+========================================
+*/
+
+function finishSelection(
+    selectedTeam
+) {
+
+    selectionLight.classList.remove(
+        "active"
+    );
+
+
+    resultName.textContent =
+        selectedTeam;
+
+
+    resultName.classList.add(
+        "show"
+    );
+
+
+    const box =
+        document.getElementById(
+            "pick-" + currentPick
+        );
+
+
+    if (box) {
+
+        box.classList.add(
+            "revealed"
+        );
+
+        box.querySelector(
+            ".pick-name"
+        ).textContent =
+            selectedTeam;
+
+    }
+
+
+    remainingTeams =
+        remainingTeams.filter(
+            team =>
+                team !== selectedTeam
+        );
+
+
+    currentPick--;
+
+
+    if (currentPick > 0) {
+
+        positionNumber.textContent =
+            currentPick;
+
+
+        setTimeout(() => {
+
+            createBalls();
+
+            startButton.disabled =
+                false;
+
+        }, 500);
+
+    } else {
+
+        positionNumber.textContent =
+            "DONE";
+
+        startButton.textContent =
+            "COMPLETE";
+
+    }
+
+
+    spinning = false;
+
+}
+
+
+/*
+========================================
 RESET
-===========================================================
+========================================
 */
 
 resetButton.addEventListener(
     "click",
-    resetRoulette
+    resetLottery
 );
 
 
-function resetRoulette() {
+function resetLottery() {
 
     if (spinning) return;
 
@@ -1144,13 +1185,6 @@ function resetRoulette() {
 
     remainingTeams =
         [...PRESET_ORDER];
-
-
-    rotation = 0;
-
-
-    wheel.style.transform =
-        "rotate(0deg)";
 
 
     resultName.textContent =
@@ -1174,34 +1208,27 @@ function resetRoulette() {
         "START";
 
 
+    selectionLight.classList.remove(
+        "active"
+    );
+
+
     createBoard();
 
-    createNames();
+    createBalls();
 
 }
 
 
 /*
-===========================================================
+========================================
 INITIALIZE
-===========================================================
+========================================
 */
 
 createBoard();
 
-createNames();
-
-
-/*
-Recalculate name positions
-if the screen changes size.
-*/
-
-window.addEventListener(
-    "resize",
-    createNames
-);
-
+createBalls();
 
 </script>
 
