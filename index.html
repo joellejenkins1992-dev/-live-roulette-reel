@@ -7,6 +7,7 @@
 <title>Live Roulette Reel - NFL Fantasy Draft Order</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -14,184 +15,393 @@
 body {
     margin: 0;
     min-height: 100vh;
-    background:
-        radial-gradient(circle at 50% 15%, #243b5a 0%, #0b1422 45%, #03070c 100%);
-    color: white;
     font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            #263d5d 0%,
+            #0d1726 42%,
+            #03070c 100%
+        );
+
+    overflow-x: hidden;
 }
 
 .app {
     min-height: 100vh;
-    padding: 22px 14px 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    padding: 22px 12px 50px;
 }
+
+
+/* =========================
+   HEADER
+========================= */
 
 .header {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .header h1 {
     margin: 0;
+
     font-size: clamp(34px, 8vw, 62px);
     font-weight: 950;
+
     letter-spacing: 2px;
     text-transform: uppercase;
+
+    text-shadow:
+        0 4px 15px rgba(0,0,0,.7);
 }
 
 .header p {
     margin: 8px 0 0;
-    color: #9db0c7;
+
+    color: #9db0c8;
+
     font-size: 13px;
-    letter-spacing: 3px;
+    font-weight: 700;
+
+    letter-spacing: 4px;
     text-transform: uppercase;
 }
 
+
+/* =========================
+   MAIN CARD
+========================= */
+
 .card {
-    width: min(900px, 100%);
+    width: min(920px, 100%);
+
     padding: 22px;
-    border-radius: 25px;
-    background: rgba(5, 13, 24, .9);
-    border: 1px solid rgba(255,255,255,.1);
-    box-shadow: 0 30px 80px rgba(0,0,0,.55);
+
+    border-radius: 26px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20,32,50,.95),
+            rgba(4,10,18,.96)
+        );
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.65),
+        inset 0 1px rgba(255,255,255,.06);
 }
+
+
+/* =========================
+   PICK DISPLAY
+========================= */
 
 .position {
     text-align: center;
+
     margin-bottom: 12px;
 }
 
 .position-label {
     color: #879bb4;
+
     font-size: 12px;
+    font-weight: 700;
+
     letter-spacing: 3px;
+
     text-transform: uppercase;
 }
 
 .position-number {
+    margin-top: 3px;
+
     font-size: 48px;
     font-weight: 950;
+
     line-height: 1;
-    margin-top: 5px;
+
+    text-shadow:
+        0 4px 15px rgba(0,0,0,.7);
 }
+
+
+/* =========================
+   ROULETTE
+========================= */
 
 .wheel-container {
-    width: min(540px, 90vw);
-    aspect-ratio: 1;
-    margin: 0 auto;
+
     position: relative;
+
+    width: min(540px, 92vw);
+    aspect-ratio: 1;
+
+    margin: 0 auto;
 }
+
+
+/* Gold pointer */
 
 .pointer {
+
     position: absolute;
-    z-index: 20;
-    top: -3px;
+
+    z-index: 50;
+
     left: 50%;
+    top: -6px;
+
     transform: translateX(-50%);
+
     width: 0;
     height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 42px solid #f6c84c;
-    filter: drop-shadow(0 4px 5px #000);
+
+    border-left: 21px solid transparent;
+    border-right: 21px solid transparent;
+    border-top: 43px solid #ffd447;
+
+    filter:
+        drop-shadow(0 4px 4px #000);
 }
+
+
+/* Outer roulette */
 
 .wheel {
+
     position: absolute;
+
     inset: 0;
+
     border-radius: 50%;
-    border: 10px solid #cbd5df;
-    background: #152238;
+
+    border: 11px solid #cfd7df;
+
+    background:
+        conic-gradient(
+
+            from -15deg,
+
+            #b51f2d 0deg 30deg,
+            #101820 30deg 60deg,
+
+            #b51f2d 60deg 90deg,
+            #101820 90deg 120deg,
+
+            #b51f2d 120deg 150deg,
+            #101820 150deg 180deg,
+
+            #b51f2d 180deg 210deg,
+            #101820 210deg 240deg,
+
+            #b51f2d 240deg 270deg,
+            #101820 270deg 300deg,
+
+            #b51f2d 300deg 330deg,
+            #101820 330deg 360deg
+        );
+
     box-shadow:
-        0 0 0 5px #060b12,
-        0 0 40px rgba(0,0,0,.8),
+
+        0 0 0 5px #05090f,
+
+        0 0 45px rgba(0,0,0,.9),
+
         inset 0 0 35px rgba(0,0,0,.8);
-    overflow: hidden;
-    transition: transform 5.5s cubic-bezier(.08,.7,.08,1);
-}
 
-.segment {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    width: 50%;
-    height: 50%;
-    transform-origin: 0% 100%;
+    transition:
+        transform 5.8s cubic-bezier(.08,.72,.08,1);
+
     overflow: hidden;
 }
 
-.segment-inner {
+
+/* Inner ring */
+
+.wheel::before {
+
+    content: "";
+
     position: absolute;
-    width: 200%;
-    height: 200%;
-    left: -100%;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    padding-top: 18px;
-    text-align: center;
-    font-size: 11px;
-    font-weight: 900;
-    text-transform: uppercase;
+
+    inset: 13%;
+
+    border-radius: 50%;
+
+    border: 2px solid rgba(255,255,255,.25);
+
+    box-shadow:
+        inset 0 0 20px rgba(0,0,0,.6);
 }
 
-.center {
+
+/* =========================
+   NAMES AROUND WHEEL
+========================= */
+
+.names {
+
     position: absolute;
-    z-index: 15;
-    width: 105px;
-    height: 105px;
+
+    inset: 0;
+
+    z-index: 10;
+
+    pointer-events: none;
+}
+
+
+/*
+Each name is placed around
+the circumference.
+*/
+
+.name-slot {
+
+    position: absolute;
+
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: radial-gradient(circle, #273b54, #060a10 72%);
-    border: 7px solid #d7dee6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    width: 82px;
+
+    margin-left: -41px;
+    margin-top: -14px;
+
     text-align: center;
+
+    font-size: 12px;
+
     font-weight: 950;
-    font-size: 13px;
-    letter-spacing: 1px;
-    box-shadow: 0 0 25px rgba(0,0,0,.8);
+
+    text-transform: uppercase;
+
+    letter-spacing: .4px;
+
+    text-shadow:
+        0 2px 4px #000;
+
+    white-space: nowrap;
 }
 
-.result {
+
+/* =========================
+   CENTER HUB
+========================= */
+
+.center {
+
+    position: absolute;
+
+    z-index: 30;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 112px;
+    height: 112px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #334963 0%,
+            #101a27 65%,
+            #05090e 100%
+        );
+
+    border: 7px solid #d8dfe5;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
     text-align: center;
+
+    font-size: 13px;
+    font-weight: 950;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 0 25px rgba(0,0,0,.9),
+        inset 0 0 15px rgba(0,0,0,.7);
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result {
+
+    text-align: center;
+
     min-height: 105px;
+
     margin-top: 20px;
 }
 
 .result-label {
-    color: #8195ae;
+
+    color: #8296ae;
+
     font-size: 12px;
+    font-weight: 700;
+
     letter-spacing: 3px;
+
     text-transform: uppercase;
 }
 
 .result-name {
-    margin-top: 6px;
-    font-size: clamp(30px, 7vw, 55px);
+
+    margin-top: 7px;
+
+    font-size: clamp(30px, 7vw, 56px);
+
     font-weight: 950;
+
     opacity: 0;
+
     transform: scale(.7);
+
+    text-shadow:
+        0 5px 20px rgba(0,0,0,.8);
 }
 
 .result-name.show {
-    animation: reveal .7s cubic-bezier(.17,.84,.32,1.25) forwards;
+
+    animation:
+        reveal .7s cubic-bezier(.17,.84,.32,1.25)
+        forwards;
 }
 
+
 @keyframes reveal {
+
     0% {
         opacity: 0;
         transform: scale(.7);
     }
 
-    70% {
+    65% {
         opacity: 1;
-        transform: scale(1.08);
+        transform: scale(1.1);
     }
 
     100% {
@@ -200,462 +410,798 @@ body {
     }
 }
 
+
+/* =========================
+   BUTTONS
+========================= */
+
 .buttons {
+
     display: flex;
+
     justify-content: center;
+
     gap: 12px;
+
     margin-top: 8px;
 }
 
 button {
-    border: 0;
+
+    border: none;
+
     border-radius: 12px;
-    padding: 16px 34px;
+
+    padding: 16px 38px;
+
     font-size: 16px;
+
     font-weight: 950;
+
     cursor: pointer;
+
+    transition:
+        transform .15s,
+        opacity .15s;
 }
 
 .start {
-    background: linear-gradient(135deg, #e11d48, #b91c1c);
+
     color: white;
-    box-shadow: 0 10px 30px rgba(225,29,72,.3);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ed1b2f,
+            #a90e1e
+        );
+
+    box-shadow:
+        0 10px 30px rgba(220,20,45,.35);
+}
+
+.start:hover {
+
+    transform:
+        translateY(-2px);
 }
 
 .start:disabled {
+
     opacity: .45;
+
     cursor: not-allowed;
+
+    transform: none;
 }
 
 .reset {
-    background: #1a293b;
+
     color: #d4dce6;
+
+    background:
+        linear-gradient(
+            135deg,
+            #26384d,
+            #172434
+        );
 }
 
+
+/* =========================
+   DRAFT BOARD
+========================= */
+
 .board {
-    margin-top: 25px;
+
+    margin-top: 27px;
 }
 
 .board-title {
+
     color: #8195ae;
+
     font-size: 12px;
+    font-weight: 700;
+
     letter-spacing: 3px;
+
     text-transform: uppercase;
+
     margin-bottom: 10px;
 }
 
 .picks {
+
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
     gap: 9px;
 }
 
 .pick {
+
     min-height: 68px;
+
     padding: 10px;
+
     border-radius: 11px;
+
     background: #0d1827;
-    border: 1px solid #1d2b3d;
+
+    border:
+        1px solid #1d2b3d;
+
+    transition:
+        .3s ease;
 }
 
 .pick.revealed {
-    background: #132942;
-    border-color: #55789d;
+
+    background:
+        linear-gradient(
+            145deg,
+            #193552,
+            #10253b
+        );
+
+    border-color:
+        #6386aa;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.25);
 }
 
 .pick-number-small {
+
     color: #60758e;
+
     font-size: 10px;
+
     text-transform: uppercase;
 }
 
 .pick-name {
+
     margin-top: 5px;
+
     font-size: 13px;
+
     font-weight: 850;
 }
 
+
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:600px) {
+
     .card {
         padding: 14px;
     }
 
-    .picks {
-        grid-template-columns: repeat(3, 1fr);
+    .wheel-container {
+        width: min(500px, 94vw);
     }
 
     .center {
-        width: 85px;
-        height: 85px;
+
+        width: 82px;
+        height: 82px;
+
+        font-size: 11px;
+    }
+
+    .name-slot {
+
+        width: 72px;
+
+        margin-left: -36px;
+
+        font-size: 10px;
+    }
+
+    .picks {
+
+        grid-template-columns:
+            repeat(3, 1fr);
     }
 }
+
 </style>
 </head>
+
 
 <body>
 
 <div class="app">
 
-    <header class="header">
-        <h1>Live Roulette Reel</h1>
-        <p>NFL Fantasy Draft Order</p>
-    </header>
+<header class="header">
 
-    <main class="card">
+    <h1>
+        Live Roulette Reel
+    </h1>
 
-        <div class="position">
-            <div class="position-label">
-                Draft Position
-            </div>
+    <p>
+        NFL Fantasy Draft Order
+    </p>
 
-            <div class="position-number" id="positionNumber">
-                12
-            </div>
+</header>
+
+
+<main class="card">
+
+
+<div class="position">
+
+    <div class="position-label">
+        Draft Position
+    </div>
+
+    <div
+        class="position-number"
+        id="positionNumber">
+
+        12
+
+    </div>
+
+</div>
+
+
+<div class="wheel-container">
+
+    <div class="pointer"></div>
+
+    <div
+        class="wheel"
+        id="wheel">
+
+        <div
+            class="names"
+            id="names">
         </div>
 
-        <div class="wheel-container">
+    </div>
 
-            <div class="pointer"></div>
 
-            <div class="wheel" id="wheel"></div>
+    <div class="center">
 
-            <div class="center">
-                LIVE<br>ROULETTE
-            </div>
+        LIVE<br>
+        ROULETTE
 
-        </div>
+    </div>
 
-        <div class="result">
+</div>
 
-            <div class="result-label">
-                Selected Team
-            </div>
 
-            <div class="result-name" id="resultName">
-                —
-            </div>
+<div class="result">
 
-        </div>
+    <div class="result-label">
 
-        <div class="buttons">
+        Selected Team
 
-            <button
-                class="start"
-                id="startButton">
-                START
-            </button>
+    </div>
 
-            <button
-                class="reset"
-                id="resetButton">
-                RESET
-            </button>
+    <div
+        class="result-name"
+        id="resultName">
 
-        </div>
+        —
 
-        <section class="board">
+    </div>
 
-            <div class="board-title">
-                NFL Fantasy Draft Order
-            </div>
+</div>
 
-            <div class="picks" id="picks"></div>
 
-        </section>
+<div class="buttons">
 
-    </main>
+    <button
+        class="start"
+        id="startButton">
+
+        START
+
+    </button>
+
+
+    <button
+        class="reset"
+        id="resetButton">
+
+        RESET
+
+    </button>
+
+</div>
+
+
+<section class="board">
+
+    <div class="board-title">
+
+        NFL Fantasy Draft Order
+
+    </div>
+
+    <div
+        class="picks"
+        id="picks">
+    </div>
+
+</section>
+
+
+</main>
 
 </div>
 
 
 <script>
 
+
 /*
 ===========================================================
-YOUR DRAFT ORDER
-===========================================================
-
-PUT YOUR 12 TEAMS IN THE EXACT ORDER YOU WANT THEM
-TO APPEAR IN THE FINAL DRAFT.
-
-Example:
-
-Index 0 = Pick 1
-Index 1 = Pick 2
-...
-Index 7 = Pick 8
-
-Joey is currently Pick 8 in this example.
-CHANGE THE OTHER NAMES.
+YOUR PREDETERMINED DRAFT ORDER
 ===========================================================
 */
 
 const PRESET_ORDER = [
-    "Blue Wolf",      // Pick 1
-    "Denton",      // Pick 2
-    "Griga",      // Pick 3
-    "Otto",      // Pick 4
-    "Twin",      // Pick 5
-    "Myro",      // Pick 6
-    "Eli",      // Pick 7
-    "Joey",        // Pick 8
-    "Ling",      // Pick 9
-    "Yellow",     // Pick 10
-    "Les",     // Pick 11
-    "Papi"      // Pick 12
+
+    "Blue Wolf",    // Pick 1
+    "Denton",       // Pick 2
+    "Griga",        // Pick 3
+    "Otto",         // Pick 4
+    "Twin",         // Pick 5
+    "Myro",         // Pick 6
+    "Eli",          // Pick 7
+    "Joey",         // Pick 8
+    "Ling",         // Pick 9
+    "Yellow",       // Pick 10
+    "Les",          // Pick 11
+    "Papi"          // Pick 12
+
 ];
 
 
+let currentPick = 12;
+
+let remainingTeams =
+    [...PRESET_ORDER];
+
+let spinning = false;
+
+let rotation = 0;
+
+
+const wheel =
+    document.getElementById("wheel");
+
+const names =
+    document.getElementById("names");
+
+const startButton =
+    document.getElementById("startButton");
+
+const resetButton =
+    document.getElementById("resetButton");
+
+const resultName =
+    document.getElementById("resultName");
+
+const positionNumber =
+    document.getElementById("positionNumber");
+
+const picks =
+    document.getElementById("picks");
+
+
 /*
 ===========================================================
-APP
+CREATE WHEEL NAMES
 ===========================================================
 */
 
-let currentPick = 12;
-let spinning = false;
-let remainingTeams = [...PRESET_ORDER];
-let rotation = 0;
+function createNames() {
 
-const wheel = document.getElementById("wheel");
-const startButton = document.getElementById("startButton");
-const resetButton = document.getElementById("resetButton");
-const resultName = document.getElementById("resultName");
-const positionNumber = document.getElementById("positionNumber");
-const picks = document.getElementById("picks");
+    names.innerHTML = "";
+
+    const count =
+        remainingTeams.length;
+
+    if (!count) return;
+
+    const angle =
+        360 / count;
+
+
+    remainingTeams.forEach(
+        (team, index) => {
+
+            const slot =
+                document.createElement("div");
+
+            slot.className =
+                "name-slot";
+
+
+            /*
+            Put each name at the center
+            of its roulette section.
+            */
+
+            const nameAngle =
+                index * angle +
+                angle / 2;
+
+
+            const radius =
+                window.innerWidth <= 600
+                ? 39
+                : 41;
+
+
+            slot.style.transform =
+                `
+                rotate(${nameAngle}deg)
+                translateY(-${radius}%)
+                rotate(-${nameAngle}deg)
+                `;
+
+
+            slot.textContent =
+                team;
+
+
+            names.appendChild(slot);
+
+        }
+    );
+}
 
 
 /*
-CREATE DRAFT BOARD
+===========================================================
+DRAFT BOARD
+===========================================================
 */
 
 function createBoard() {
 
     picks.innerHTML = "";
 
-    for (let i = 12; i >= 1; i--) {
 
-        const box = document.createElement("div");
+    for (
+        let i = 12;
+        i >= 1;
+        i--
+    ) {
 
-        box.className = "pick";
-        box.id = "pick-" + i;
+        const box =
+            document.createElement("div");
+
+        box.className =
+            "pick";
+
+        box.id =
+            "pick-" + i;
+
 
         box.innerHTML = `
+
             <div class="pick-number-small">
+
                 Pick ${i}
+
             </div>
 
             <div class="pick-name">
+
                 —
+
             </div>
+
         `;
 
+
         picks.appendChild(box);
+
     }
+
 }
 
 
 /*
-CREATE ROULETTE WHEEL
+===========================================================
+SPIN
+===========================================================
 */
 
-function createWheel() {
+startButton.addEventListener(
+    "click",
+    startRoulette
+);
 
-    wheel.innerHTML = "";
-
-    const count = remainingTeams.length;
-
-    if (!count) return;
-
-    const angle = 360 / count;
-
-    remainingTeams.forEach((team, index) => {
-
-        const segment = document.createElement("div");
-
-        segment.className = "segment";
-
-        segment.style.transform =
-            `rotate(${index * angle}deg) skewY(${90 - angle}deg)`;
-
-        const inner = document.createElement("div");
-
-        inner.className = "segment-inner";
-
-        inner.style.transform =
-            `rotate(${angle / 2}deg) skewY(-${90 - angle}deg)`;
-
-        inner.textContent = team;
-
-        segment.appendChild(inner);
-
-        wheel.appendChild(segment);
-    });
-}
-
-
-/*
-START
-*/
-
-startButton.addEventListener("click", startRoulette);
 
 function startRoulette() {
 
-    if (spinning || remainingTeams.length === 0) {
+    if (
+        spinning ||
+        remainingTeams.length === 0
+    ) {
+
         return;
+
     }
 
+
     spinning = true;
+
     startButton.disabled = true;
 
-    resultName.classList.remove("show");
-    resultName.textContent = "—";
+
+    resultName.classList.remove(
+        "show"
+    );
+
+
+    resultName.textContent =
+        "—";
+
 
     /*
-    The next team comes from your configured
-    draft-order list.
+    Find the predetermined winner
+    for this draft position.
     */
 
     const selectedTeam =
-        PRESET_ORDER[currentPick - 1];
+        PRESET_ORDER[
+            currentPick - 1
+        ];
+
 
     const winnerIndex =
-        remainingTeams.indexOf(selectedTeam);
+        remainingTeams.indexOf(
+            selectedTeam
+        );
 
-    const count = remainingTeams.length;
 
-    const segmentAngle = 360 / count;
+    const count =
+        remainingTeams.length;
+
+
+    const segmentAngle =
+        360 / count;
+
 
     /*
-    Point the selected segment toward
-    the pointer at the top.
+    Center of selected section.
     */
 
-    const target =
-        360 -
-        (winnerIndex * segmentAngle) -
-        (segmentAngle / 2);
+    const targetAngle =
+        winnerIndex * segmentAngle +
+        segmentAngle / 2;
 
-    const fullSpins =
-        6 + Math.floor(Math.random() * 3);
+
+    /*
+    Rotate backwards so that the
+    selected name reaches the top
+    pointer.
+    */
+
+    const targetRotation =
+        360 -
+        targetAngle;
+
+
+    /*
+    Multiple complete spins.
+    */
+
+    const extraSpins =
+        7 +
+        Math.floor(
+            Math.random() * 3
+        );
+
 
     rotation +=
-        fullSpins * 360 +
-        target;
+        extraSpins * 360 +
+        targetRotation;
+
 
     wheel.style.transform =
         `rotate(${rotation}deg)`;
 
 
     /*
-    Wait for the wheel animation.
+    Wait for wheel animation.
     */
 
-    setTimeout(() => {
+    setTimeout(
 
-        resultName.textContent =
-            selectedTeam;
+        () => {
 
-        resultName.classList.add("show");
+            resultName.textContent =
+                selectedTeam;
 
-        showPick(
-            currentPick,
-            selectedTeam
-        );
 
-        remainingTeams =
-            remainingTeams.filter(
-                team => team !== selectedTeam
+            resultName.classList.add(
+                "show"
             );
 
-        currentPick--;
 
-        if (currentPick > 0) {
+            showPick(
+                currentPick,
+                selectedTeam
+            );
 
-            positionNumber.textContent =
-                currentPick;
 
-            createWheel();
+            remainingTeams =
+                remainingTeams.filter(
+                    team =>
+                        team !== selectedTeam
+                );
 
-            startButton.disabled = false;
 
-        } else {
+            currentPick--;
 
-            positionNumber.textContent =
-                "DONE";
 
-            startButton.textContent =
-                "COMPLETE";
+            if (
+                currentPick > 0
+            ) {
 
-        }
+                positionNumber.textContent =
+                    currentPick;
 
-        spinning = false;
 
-    }, 5700);
+                createNames();
+
+
+                startButton.disabled =
+                    false;
+
+            }
+
+            else {
+
+                positionNumber.textContent =
+                    "DONE";
+
+
+                startButton.textContent =
+                    "COMPLETE";
+
+            }
+
+
+            spinning = false;
+
+        },
+
+        5900
+
+    );
+
 }
 
 
 /*
+===========================================================
 SHOW PICK
+===========================================================
 */
 
-function showPick(position, team) {
+function showPick(
+    position,
+    team
+) {
 
     const box =
         document.getElementById(
             "pick-" + position
         );
 
+
     if (!box) return;
 
-    box.classList.add("revealed");
 
-    box.querySelector(".pick-name")
-        .textContent = team;
+    box.classList.add(
+        "revealed"
+    );
+
+
+    box.querySelector(
+        ".pick-name"
+    ).textContent =
+        team;
+
 }
 
 
 /*
+===========================================================
 RESET
+===========================================================
 */
 
-resetButton.addEventListener("click", reset);
+resetButton.addEventListener(
+    "click",
+    resetRoulette
+);
 
-function reset() {
+
+function resetRoulette() {
 
     if (spinning) return;
 
+
     currentPick = 12;
 
-    remainingTeams = [...PRESET_ORDER];
+
+    remainingTeams =
+        [...PRESET_ORDER];
+
 
     rotation = 0;
+
 
     wheel.style.transform =
         "rotate(0deg)";
 
-    resultName.textContent = "—";
 
-    resultName.classList.remove("show");
+    resultName.textContent =
+        "—";
 
-    positionNumber.textContent = "12";
 
-    startButton.disabled = false;
+    resultName.classList.remove(
+        "show"
+    );
 
-    startButton.textContent = "START";
+
+    positionNumber.textContent =
+        "12";
+
+
+    startButton.disabled =
+        false;
+
+
+    startButton.textContent =
+        "START";
+
 
     createBoard();
-    createWheel();
+
+    createNames();
+
 }
 
 
 /*
+===========================================================
 INITIALIZE
+===========================================================
 */
 
 createBoard();
-createWheel();
+
+createNames();
+
+
+/*
+Recalculate name positions
+if the screen changes size.
+*/
+
+window.addEventListener(
+    "resize",
+    createNames
+);
+
 
 </script>
 
