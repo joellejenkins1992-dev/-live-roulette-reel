@@ -6,257 +6,286 @@
 <title>Fantasy Draft Order</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    body {
-        margin: 0;
-        min-height: 100vh;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #0b1020;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-    }
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b1020;
+    color: white;
+    overflow: hidden;
+}
 
-    .app {
-        width: 100%;
-        max-width: 900px;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 25px;
-    }
+#app {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
 
-    h1 {
-        font-size: clamp(32px, 7vw, 60px);
-        margin: 0 0 12px;
-        text-align: center;
-    }
+/* START SCREEN */
 
-    .subtitle {
-        color: #aab3c5;
-        font-size: 18px;
-        margin-bottom: 35px;
-        text-align: center;
-    }
+#startScreen {
+    text-align: center;
+}
 
-    button {
-        border: none;
-        border-radius: 14px;
-        padding: 17px 42px;
-        font-size: 20px;
-        font-weight: bold;
-        cursor: pointer;
-        background: white;
-        color: #0b1020;
-        transition: transform 0.15s;
-    }
+h1 {
+    font-size: clamp(38px, 8vw, 64px);
+    margin: 0 0 12px;
+}
 
-    button:hover {
-        transform: scale(1.04);
-    }
+.subtitle {
+    color: #aab3c5;
+    font-size: 18px;
+    margin-bottom: 35px;
+}
 
-    button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-        transform: none;
-    }
+.buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
-    #game {
-        display: none;
-        width: 100%;
-        height: 100vh;
-        position: relative;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+button {
+    border: none;
+    border-radius: 12px;
+    padding: 16px 34px;
+    font-size: 19px;
+    font-weight: bold;
+    cursor: pointer;
+    background: white;
+    color: #0b1020;
+}
 
-    #ballArea {
-        position: relative;
-        width: min(90vw, 700px);
-        height: min(65vh, 500px);
-        overflow: hidden;
-    }
+button:hover {
+    transform: scale(1.03);
+}
 
-    .ball {
-        position: absolute;
-        width: 72px;
-        height: 72px;
-        border-radius: 50%;
-        background: white;
-        color: #111827;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        font-size: 12px;
-        font-weight: bold;
-        padding: 7px;
-        box-shadow:
-            0 7px 15px rgba(0,0,0,.35),
-            inset -5px -5px 10px rgba(0,0,0,.12);
-        user-select: none;
-        transition: left .15s linear, top .15s linear;
-    }
+.resetButton {
+    background: #30394f;
+    color: white;
+}
 
-    #result {
-        display: none;
-        text-align: center;
-        z-index: 10;
-    }
+/* GAME */
 
-    #pickNumber {
-        color: #aab3c5;
-        font-size: 20px;
-        margin-bottom: 8px;
-    }
+#game {
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-    #winner {
-        font-size: clamp(42px, 10vw, 80px);
-        font-weight: 900;
-        margin-bottom: 30px;
-    }
+#ballArea {
+    position: relative;
+    width: min(90vw, 760px);
+    height: min(65vh, 520px);
+}
 
-    #nextButton {
-        display: none;
-    }
+/* BALLS */
 
-    #complete {
-        display: none;
-        text-align: center;
-    }
+.ball {
+    position: absolute;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: white;
+    color: #111827;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.4),
+        inset -5px -5px 10px rgba(0,0,0,.12);
+    user-select: none;
+}
 
-    #complete h2 {
-        font-size: 42px;
-        margin-bottom: 25px;
-    }
+/* RESULT */
 
-    .final-order {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        margin-bottom: 25px;
-    }
+#result {
+    display: none;
+    text-align: center;
+}
 
-    .pick {
-        background: rgba(255,255,255,.08);
-        border-radius: 10px;
-        padding: 10px 20px;
-        font-size: 18px;
-    }
+#pickNumber {
+    font-size: 22px;
+    color: #aab3c5;
+    margin-bottom: 8px;
+}
+
+#winner {
+    font-size: clamp(45px, 11vw, 85px);
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+#nextButton {
+    display: none;
+}
+
+/* COMPLETE */
+
+#complete {
+    display: none;
+    text-align: center;
+}
+
+#complete h2 {
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+
+.finalOrder {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 25px;
+}
+
+.pick {
+    background: rgba(255,255,255,.08);
+    border-radius: 9px;
+    padding: 9px 25px;
+    font-size: 18px;
+}
 </style>
 </head>
 
 <body>
 
-<div class="app">
+<div id="app">
 
     <!-- CLEAN OPENING SCREEN -->
     <div id="startScreen">
+
         <h1>Fantasy Draft Order</h1>
-        <div class="subtitle">Ready to determine the draft order?</div>
-        <button onclick="startDraft()">Start Draft</button>
+
+        <div class="subtitle">
+            Ready to determine the draft order?
+        </div>
+
+        <div class="buttons">
+
+            <button onclick="startDraft()">
+                Start Draft
+            </button>
+
+            <button class="resetButton" onclick="resetDraft()">
+                Reset
+            </button>
+
+        </div>
+
     </div>
 
-    <!-- LOTTERY -->
+
+    <!-- GAME -->
+
     <div id="game">
 
         <div id="ballArea"></div>
 
         <div id="result">
+
             <div id="pickNumber"></div>
+
             <div id="winner"></div>
-            <button id="nextButton" onclick="nextPick()">Next Pick</button>
+
+            <button id="nextButton" onclick="nextPick()">
+                Next Pick
+            </button>
+
         </div>
 
+
         <div id="complete">
+
             <h2>Draft Order Complete</h2>
-            <div class="final-order" id="finalOrder"></div>
-            <button onclick="location.reload()">Restart</button>
+
+            <div class="finalOrder" id="finalOrder"></div>
+
+            <button onclick="resetDraft()">
+                Reset
+            </button>
+
         </div>
 
     </div>
 
 </div>
 
+
 <script>
 
 /*
 ====================================================
-DRAFT NAMES
+YOUR LEAGUE MEMBERS
 ====================================================
-Replace these names with your actual league members.
 */
 
 const players = [
     "Blue Wolf",
+    "Denton",
+    "Griga",
+    "Otto",
+    "Twin",
+    "Myro",
+    "Eli",
     "Joey",
-    "Player 3",
-    "Player 4",
-    "Player 5",
-    "Player 6",
-    "Player 7",
-    "Player 8",
-    "Player 9",
-    "Player 10",
-    "Player 11",
-    "Player 12"
+    "Ling",
+    "Yellow",
+    "Les",
+    "Papi"
 ];
 
 
 /*
 ====================================================
-HIDDEN DRAFT ORDER
+PREDETERMINED ORDER
 ====================================================
 
-This determines the actual result.
+THIS IS HIDDEN FROM THE USER.
 
-The website DOES NOT display this order.
-
-Change the names below to whatever order you want.
-
-Example:
-If Joey must be 8th, Joey goes in position 8.
+The website will reveal these names one at a time.
 */
 
 const predeterminedOrder = [
     "Blue Wolf",
-    "Player 3",
-    "Player 5",
-    "Player 9",
-    "Player 4",
-    "Player 11",
-    "Player 6",
+    "Denton",
+    "Griga",
+    "Otto",
+    "Twin",
+    "Myro",
+    "Eli",
     "Joey",
-    "Player 10",
-    "Player 12",
-    "Player 7",
-    "Player 8"
+    "Ling",
+    "Yellow",
+    "Les",
+    "Papi"
 ];
 
-
-/*
-====================================================
-GAME VARIABLES
-====================================================
-*/
 
 let remainingPlayers = [];
 let currentPick = 0;
 let balls = [];
 let animationTimer = null;
+let drawTimeout = null;
 
 
 /*
 ====================================================
-START DRAFT
+START
 ====================================================
 */
 
@@ -265,6 +294,10 @@ function startDraft() {
     document.getElementById("startScreen").style.display = "none";
 
     document.getElementById("game").style.display = "flex";
+
+    document.getElementById("complete").style.display = "none";
+
+    document.getElementById("result").style.display = "none";
 
     remainingPlayers = [...players];
 
@@ -286,9 +319,11 @@ function createBalls() {
 
     area.innerHTML = "";
 
+    area.style.display = "block";
+
     balls = [];
 
-    remainingPlayers.forEach((name, index) => {
+    remainingPlayers.forEach(name => {
 
         const ball = document.createElement("div");
 
@@ -296,47 +331,54 @@ function createBalls() {
 
         ball.textContent = name;
 
-        ball.style.left =
-            Math.random() * (area.clientWidth - 75) + "px";
+        const x =
+            Math.random() *
+            Math.max(1, area.clientWidth - 76);
 
-        ball.style.top =
-            Math.random() * (area.clientHeight - 75) + "px";
+        const y =
+            Math.random() *
+            Math.max(1, area.clientHeight - 76);
+
+        ball.style.left = x + "px";
+        ball.style.top = y + "px";
 
         area.appendChild(ball);
 
         balls.push({
+
             element: ball,
+
             name: name,
-            x: parseFloat(ball.style.left),
-            y: parseFloat(ball.style.top),
-            dx: (Math.random() - .5) * 8,
-            dy: (Math.random() - .5) * 8
+
+            x: x,
+
+            y: y,
+
+            dx: (Math.random() - 0.5) * 8,
+
+            dy: (Math.random() - 0.5) * 8
+
         });
+
     });
 
     animateBalls();
 
-    setTimeout(() => {
-
-        clearInterval(animationTimer);
-
-        drawWinner();
-
-    }, 3000);
+    drawTimeout = setTimeout(drawWinner, 3500);
 }
 
 
 /*
 ====================================================
-BALL ANIMATION
+ANIMATE BALLS
 ====================================================
 */
 
 function animateBalls() {
 
-    const area = document.getElementById("ballArea");
-
     clearInterval(animationTimer);
+
+    const area = document.getElementById("ballArea");
 
     animationTimer = setInterval(() => {
 
@@ -347,20 +389,23 @@ function animateBalls() {
 
             if (
                 ball.x <= 0 ||
-                ball.x >= area.clientWidth - 72
+                ball.x >= area.clientWidth - 76
             ) {
                 ball.dx *= -1;
             }
 
             if (
                 ball.y <= 0 ||
-                ball.y >= area.clientHeight - 72
+                ball.y >= area.clientHeight - 76
             ) {
                 ball.dy *= -1;
             }
 
-            ball.element.style.left = ball.x + "px";
-            ball.element.style.top = ball.y + "px";
+            ball.element.style.left =
+                ball.x + "px";
+
+            ball.element.style.top =
+                ball.y + "px";
 
         });
 
@@ -376,29 +421,32 @@ DRAW WINNER
 
 function drawWinner() {
 
-    const winnerName = predeterminedOrder[currentPick];
+    clearInterval(animationTimer);
 
-    const winningBall = balls.find(
-        ball => ball.name === winnerName
-    );
+    const winnerName =
+        predeterminedOrder[currentPick];
+
+    const winningBall =
+        balls.find(ball => ball.name === winnerName);
 
     if (!winningBall) {
-        alert("Error: Winner was not found in the remaining balls.");
+        alert("Something went wrong finding the selected ball.");
         return;
     }
 
+    const area =
+        document.getElementById("ballArea");
+
     /*
-    Make the winning ball move toward
-    the center before revealing it.
+    Move selected ball to center
     */
 
-    const area = document.getElementById("ballArea");
-
     winningBall.element.style.left =
-        (area.clientWidth / 2 - 36) + "px";
+        (area.clientWidth / 2 - 38) + "px";
 
     winningBall.element.style.top =
-        (area.clientHeight / 2 - 36) + "px";
+        (area.clientHeight / 2 - 38) + "px";
+
 
     setTimeout(() => {
 
@@ -412,7 +460,11 @@ function drawWinner() {
         document.getElementById("winner").textContent =
             winnerName;
 
-        if (currentPick < predeterminedOrder.length - 1) {
+
+        if (
+            currentPick <
+            predeterminedOrder.length - 1
+        ) {
 
             document.getElementById("nextButton").style.display =
                 "inline-block";
@@ -438,7 +490,8 @@ NEXT PICK
 
 function nextPick() {
 
-    const winnerName = predeterminedOrder[currentPick];
+    const winnerName =
+        predeterminedOrder[currentPick];
 
     remainingPlayers =
         remainingPlayers.filter(
@@ -449,27 +502,21 @@ function nextPick() {
 
     document.getElementById("result").style.display = "none";
 
-    document.getElementById("ballArea").style.display = "block";
-
     createBalls();
 }
 
 
 /*
 ====================================================
-FINISH
+SHOW FINAL ORDER
 ====================================================
 */
 
 function showComplete() {
 
-    const result = document.getElementById("result");
+    document.getElementById("result").style.display = "none";
 
-    result.style.display = "none";
-
-    const complete = document.getElementById("complete");
-
-    complete.style.display = "block";
+    document.getElementById("complete").style.display = "block";
 
     const finalOrder =
         document.getElementById("finalOrder");
@@ -478,7 +525,8 @@ function showComplete() {
 
     predeterminedOrder.forEach((name, index) => {
 
-        const row = document.createElement("div");
+        const row =
+            document.createElement("div");
 
         row.className = "pick";
 
@@ -488,6 +536,40 @@ function showComplete() {
         finalOrder.appendChild(row);
 
     });
+}
+
+
+/*
+====================================================
+RESET
+====================================================
+*/
+
+function resetDraft() {
+
+    clearInterval(animationTimer);
+
+    clearTimeout(drawTimeout);
+
+    balls = [];
+
+    remainingPlayers = [];
+
+    currentPick = 0;
+
+    document.getElementById("ballArea").innerHTML = "";
+
+    document.getElementById("ballArea").style.display = "block";
+
+    document.getElementById("result").style.display = "none";
+
+    document.getElementById("complete").style.display = "none";
+
+    document.getElementById("nextButton").style.display = "none";
+
+    document.getElementById("startScreen").style.display = "block";
+
+    document.getElementById("game").style.display = "none";
 }
 
 </script>
