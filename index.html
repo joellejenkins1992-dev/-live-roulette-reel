@@ -71,6 +71,24 @@ button:hover {
     color: white;
 }
 
+/* RESET POPUP */
+
+#resetPopup {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: #0b1020;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 8px 25px rgba(0,0,0,.35);
+    display: none;
+    z-index: 9999;
+}
+
 /* GAME */
 
 #game {
@@ -164,9 +182,15 @@ button:hover {
 
 <body>
 
+<!-- RESET CONFIRMATION POPUP -->
+<div id="resetPopup">
+    Reset Occurred
+</div>
+
 <div id="app">
 
     <!-- CLEAN OPENING SCREEN -->
+
     <div id="startScreen">
 
         <h1>Fantasy Draft Order</h1>
@@ -181,7 +205,9 @@ button:hover {
                 Start Draft
             </button>
 
-            <button class="resetButton" onclick="resetDraft()">
+            <button
+                class="resetButton"
+                onclick="resetDraft()">
                 Reset
             </button>
 
@@ -202,18 +228,25 @@ button:hover {
 
             <div id="winner"></div>
 
-            <button id="nextButton" onclick="nextPick()">
+            <button
+                id="nextButton"
+                onclick="nextPick()">
                 Next Pick
             </button>
 
         </div>
 
 
+        <!-- FINAL SCREEN -->
+
         <div id="complete">
 
             <h2>Draft Order Complete</h2>
 
-            <div class="finalOrder" id="finalOrder"></div>
+            <div
+                class="finalOrder"
+                id="finalOrder">
+            </div>
 
             <button onclick="resetDraft()">
                 Reset
@@ -230,7 +263,7 @@ button:hover {
 
 /*
 ====================================================
-YOUR LEAGUE MEMBERS
+LEAGUE MEMBERS
 ====================================================
 */
 
@@ -255,9 +288,9 @@ const players = [
 PREDETERMINED ORDER
 ====================================================
 
-THIS IS HIDDEN FROM THE USER.
+The order is hidden from the player.
 
-The website will reveal these names one at a time.
+It is revealed one pick at a time.
 */
 
 const predeterminedOrder = [
@@ -285,7 +318,7 @@ let drawTimeout = null;
 
 /*
 ====================================================
-START
+START DRAFT
 ====================================================
 */
 
@@ -315,7 +348,8 @@ CREATE BALLS
 
 function createBalls() {
 
-    const area = document.getElementById("ballArea");
+    const area =
+        document.getElementById("ballArea");
 
     area.innerHTML = "";
 
@@ -325,7 +359,8 @@ function createBalls() {
 
     remainingPlayers.forEach(name => {
 
-        const ball = document.createElement("div");
+        const ball =
+            document.createElement("div");
 
         ball.className = "ball";
 
@@ -340,6 +375,7 @@ function createBalls() {
             Math.max(1, area.clientHeight - 76);
 
         ball.style.left = x + "px";
+
         ball.style.top = y + "px";
 
         area.appendChild(ball);
@@ -364,13 +400,14 @@ function createBalls() {
 
     animateBalls();
 
-    drawTimeout = setTimeout(drawWinner, 3500);
+    drawTimeout =
+        setTimeout(drawWinner, 3500);
 }
 
 
 /*
 ====================================================
-ANIMATE BALLS
+BALL ANIMATION
 ====================================================
 */
 
@@ -378,38 +415,44 @@ function animateBalls() {
 
     clearInterval(animationTimer);
 
-    const area = document.getElementById("ballArea");
+    const area =
+        document.getElementById("ballArea");
 
-    animationTimer = setInterval(() => {
+    animationTimer =
+        setInterval(() => {
 
-        balls.forEach(ball => {
+            balls.forEach(ball => {
 
-            ball.x += ball.dx;
-            ball.y += ball.dy;
+                ball.x += ball.dx;
 
-            if (
-                ball.x <= 0 ||
-                ball.x >= area.clientWidth - 76
-            ) {
-                ball.dx *= -1;
-            }
+                ball.y += ball.dy;
 
-            if (
-                ball.y <= 0 ||
-                ball.y >= area.clientHeight - 76
-            ) {
-                ball.dy *= -1;
-            }
 
-            ball.element.style.left =
-                ball.x + "px";
+                if (
+                    ball.x <= 0 ||
+                    ball.x >= area.clientWidth - 76
+                ) {
+                    ball.dx *= -1;
+                }
 
-            ball.element.style.top =
-                ball.y + "px";
 
-        });
+                if (
+                    ball.y <= 0 ||
+                    ball.y >= area.clientHeight - 76
+                ) {
+                    ball.dy *= -1;
+                }
 
-    }, 30);
+
+                ball.element.style.left =
+                    ball.x + "px";
+
+                ball.element.style.top =
+                    ball.y + "px";
+
+            });
+
+        }, 30);
 }
 
 
@@ -427,18 +470,27 @@ function drawWinner() {
         predeterminedOrder[currentPick];
 
     const winningBall =
-        balls.find(ball => ball.name === winnerName);
+        balls.find(
+            ball => ball.name === winnerName
+        );
+
 
     if (!winningBall) {
-        alert("Something went wrong finding the selected ball.");
+
+        alert(
+            "Something went wrong finding the selected ball."
+        );
+
         return;
     }
+
 
     const area =
         document.getElementById("ballArea");
 
+
     /*
-    Move selected ball to center
+    Move selected ball toward center
     */
 
     winningBall.element.style.left =
@@ -452,10 +504,13 @@ function drawWinner() {
 
         area.style.display = "none";
 
-        document.getElementById("result").style.display = "block";
+        document.getElementById("result").style.display =
+            "block";
+
 
         document.getElementById("pickNumber").textContent =
             "Pick " + (currentPick + 1);
+
 
         document.getElementById("winner").textContent =
             winnerName;
@@ -493,14 +548,19 @@ function nextPick() {
     const winnerName =
         predeterminedOrder[currentPick];
 
+
     remainingPlayers =
         remainingPlayers.filter(
             player => player !== winnerName
         );
 
+
     currentPick++;
 
-    document.getElementById("result").style.display = "none";
+
+    document.getElementById("result").style.display =
+        "none";
+
 
     createBalls();
 }
@@ -508,34 +568,42 @@ function nextPick() {
 
 /*
 ====================================================
-SHOW FINAL ORDER
+FINAL ORDER
 ====================================================
 */
 
 function showComplete() {
 
-    document.getElementById("result").style.display = "none";
+    document.getElementById("result").style.display =
+        "none";
 
-    document.getElementById("complete").style.display = "block";
+
+    document.getElementById("complete").style.display =
+        "block";
+
 
     const finalOrder =
         document.getElementById("finalOrder");
 
+
     finalOrder.innerHTML = "";
 
-    predeterminedOrder.forEach((name, index) => {
 
-        const row =
-            document.createElement("div");
+    predeterminedOrder.forEach(
+        (name, index) => {
 
-        row.className = "pick";
+            const row =
+                document.createElement("div");
 
-        row.textContent =
-            (index + 1) + ". " + name;
+            row.className = "pick";
 
-        finalOrder.appendChild(row);
+            row.textContent =
+                (index + 1) + ". " + name;
 
-    });
+            finalOrder.appendChild(row);
+
+        }
+    );
 }
 
 
@@ -551,25 +619,57 @@ function resetDraft() {
 
     clearTimeout(drawTimeout);
 
+
     balls = [];
 
     remainingPlayers = [];
 
     currentPick = 0;
 
-    document.getElementById("ballArea").innerHTML = "";
 
-    document.getElementById("ballArea").style.display = "block";
+    document.getElementById("ballArea").innerHTML =
+        "";
 
-    document.getElementById("result").style.display = "none";
+    document.getElementById("ballArea").style.display =
+        "block";
 
-    document.getElementById("complete").style.display = "none";
 
-    document.getElementById("nextButton").style.display = "none";
+    document.getElementById("result").style.display =
+        "none";
 
-    document.getElementById("startScreen").style.display = "block";
 
-    document.getElementById("game").style.display = "none";
+    document.getElementById("complete").style.display =
+        "none";
+
+
+    document.getElementById("nextButton").style.display =
+        "none";
+
+
+    document.getElementById("startScreen").style.display =
+        "block";
+
+
+    document.getElementById("game").style.display =
+        "none";
+
+
+    /*
+    Show reset confirmation
+    */
+
+    const popup =
+        document.getElementById("resetPopup");
+
+
+    popup.style.display = "block";
+
+
+    setTimeout(() => {
+
+        popup.style.display = "none";
+
+    }, 2000);
 }
 
 </script>
